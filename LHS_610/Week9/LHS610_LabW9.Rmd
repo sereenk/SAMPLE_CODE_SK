@@ -1,0 +1,121 @@
+---
+title: "LHS 610: Week 9 Lab Assignment"
+author: "Sereen Kallerackal"
+output: html_notebook
+---
+
+# Submission Instructions
+Your lab solutions should be written entirely in this R notebook file. Once you are completed with the lab assignment, you should submit the .nb.html file. Before submitting, please make sure to run all code chunks and that all outputs are visible in the .nb.html file. Also make sure that all the code chunks execute without any errors.
+
+# Grading
+For lab assignment submissions, we will primarily be grading on completion. You will receive full credit on your lab if you attempt all of the problems on lab. 
+
+# Week 8 Lab Assignment Instructions
+Use tidymodels for any questions involving code. The code should be very similar to what was used in the lecture video 8-6.
+
+# Load any necessary packages here. 
+```{r}
+library(tidyverse)
+library(tidymodels)
+```
+
+# Load dataset here 
+```{r}
+load("~/Documents/UMICH/Winter_21/LHS_610/Week9/namcs08.rdata")
+
+model_data = patients %>%
+  select(-id, -visitreason) %>%
+  mutate(paytype = if_else(paytype == "Private insurance", "private_ins","non_private_ins")) %>%
+  mutate_if(is.character, . %>% na_if('')) %>%
+  drop_na()
+
+model_data
+```
+
+## 1. What is the purpose of dividing the data into a training set and test set? Why can you not just train your model and evaluate its performance using the same dataset without splitting it?
+
+Q1 Answer: Dividing the data helps to mimize the effect of data errors or discrepencies and better understand the characteristics of that particular model.
+
+
+## 2. Using the "namcs08.RData" file, develop a model to predict a paytype of private insurance or not using information from the patients data frame (other than the id and visitreason). Make sure to recode paytype to two categories, "private_ins" and "non_private_ins". Make sure to carry out all of these steps.
+ 
+- Prepare the data (as per the instructions in the recorded lecture)
+- Remove missing values (for now)
+- Split the data randomly into a training set (2/3rds) and a test set (1/3rds)
+- Use a nearest neighbors model and a decision tree to train on the training set and make predictions on the test set
+- Measure the area under the curve (roc_auc) on the test set
+```{r}
+model_data %>%
+  group_by(paytype) %>%
+  summarize(n = n()) %>%
+  mutate(prop = n/sum(n)* 100)
+
+set.seed(1)
+
+
+split_data = initial_split(model_data, prop = 2/3)
+
+str(split_data)
+
+my_recipe = recipe(training(split_data), paytype ~.)
+
+my_recipe
+
+decision_tree_model = 
+  decision_tree() %>%
+  set_engine('rpart') %>%
+  set_mode('classification')
+
+dt_workflow = workflow() %>%
+  add_recipe(my_recipe) %>%
+  add_model(decision_tree_model)
+
+dt_results =
+  logistic_workflow %>%
+  last_fit(split = split_data,
+           metrics = metric_set(roc_auc, pr_auc, accuracy))
+
+dt_results %>%
+  collect_predictions()
+
+
+dt_results %>%
+  collect_metrics()
+```
+
+```{r}
+## NN
+
+nn_model = 
+  nearest_neighbor(neighbors = 20) %>%
+  set_engine('kknn') %>%
+  set_mode('classification')
+
+nn_workflow = workflow() %>%
+  add_recipe(my_recipe) %>%
+  add_model(nn_model)
+
+nn_results =
+  logistic_workflow %>%
+  last_fit(split = split_data,
+           metrics = metric_set(roc_auc, pr_auc, accuracy))
+
+nn_results %>%
+  collect_predictions()
+
+
+nn_results %>%
+  collect_metrics()
+
+
+
+```
+
+
+
+ 
+## 3. What does the area under the curve mean? (this may not be covered in the lecture video but we will discuss in lab)
+
+Q3 Answer: The area under the curve helps to understand performance at various thresholds
+
+

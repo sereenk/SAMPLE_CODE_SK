@@ -1,0 +1,118 @@
+---
+title: "Midterm Group Project"
+output: html_notebook
+---
+
+```{r}
+# Loading Packages
+library(readxl)
+library(tidyverse)
+
+# Cleaning the data
+food_supply_unclean = read_csv("FAO_foodsupply.csv")
+undernourishment_unclean = read_csv("FAO_undern.csv")
+covid19 = read_excel("Covid_19.xlsx")
+
+```
+
+
+
+```{r}
+# Undernourishment data
+udernourishment <- undernourishment_unclean %>%
+  filter(Year == "2017-2019")%>%
+  drop_na(Value) %>%
+  mutate(undernourishment_percent = Value) %>%
+  select(Area,undernourishment_percent)
+
+```
+
+
+```{r}
+# Fao food Supply data
+food_supply <- food_supply_unclean %>%
+  filter (Element == "Food supply (kcal/capita/day)") %>%
+  group_by(Area) %>%
+  summarize(mean_food_supply = mean(Value),median_food_supply = median(Value))
+```
+
+
+```{r}
+# ALL FAO DATA
+fao_data_set <- inner_join(udernourishment,food_supply, by = "Area")
+
+
+# JOINING ALL DATA
+# changes <2.5 to 2.5
+
+final_data <- inner_join(fao_data_set,covid19, by = "Area") %>%
+  mutate(case_fatality_percent = `CASE-FATALITY`*100,
+         undernourishment_x = if_else(undernourishment_percent=="<2.5", 2.5, as.numeric(undernourishment_percent)))
+
+```
+
+
+## Unstratified Analysis:
+
+### Describe your hypothesis. What do you expect to find and why?
+We hypothesized that as undernourishment rate increases, the greater the covid fatality rate. This positive relationship between the two variables was expected because as more individuals become more undernourished, they have lesser food supply and nutrition available to them, thereby causing them to have a weaker immune system. A weaker immune system could lessen an individual’s power to fight back infections like covid-19.
+
+
+### Relatiosnhip between fatality rate and undernourishment rate by the country
+
+```{r} 
+# Ggplot to show relatiosnhip between fatality rate and undernourishment rate by the country
+
+
+final_data %>%
+  remove_missing() %>%
+  drop_na() %>%
+  ggplot(aes(x = undernourishment_x, y = case_fatality_percent, fill(Area)))+
+  geom_point()+
+  geom_jitter(height = 2, width = 2)+
+  geom_smooth(method = lm)+
+  scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0))+
+  theme(axis.line = (element_line(colour = "black", size = 0.5, linetype = "solid")))+
+  theme(axis.text.x = element_text(face="bold", color="black", size=10)) +
+  theme(axis.text.y = element_text(face="bold", color="black", size=10))+
+  labs(title= "Relationship between Undernourishment Rate and Fatality Rate" , x = "Undernourishment Rate", y = "Fatality Rate")
+
+
+
+```
+
+### Performing histogram analysis to check if the variables are normally distributed, and to check for appropriate statistical test.
+
+```{r}
+final_data %>%
+  remove_missing() %>%
+  drop_na() %>%
+  ggplot(aes(x = undernourishment_x))+
+  geom_histogram()+
+  labs(title= "Distribution of Undernourishment Rate" , x = "Undernourishment Rate", y = "Count")
+
+
+final_data %>%
+  remove_missing() %>%
+  drop_na() %>%
+  ggplot(aes(x = case_fatality_percent))+
+  geom_histogram()+
+  labs(title= "Distribution of Fatality Rate" , x = "Fatality Rate", y = "Count")
+
+```
+We created a histogram to check if our variables of interest were normally distributed. Our analysis showed that both Fatality Rate and Undernourishment Rate were not normally distrbuted and were highly skewed to the right. Because of this we performed a Spearman's correlation test.
+
+
+
+### Statistical test to show relationship between fatality rate and undernourishment rate by the country
+```{r}
+#Statistical test to show relationship between mortality rate and undernourishment rate by the country
+
+cor.test(final_data$undernourishment_x,final_data$case_fatality_percent, method = "spearman")
+
+
+```
+
+Interpretation: 
+According to the scatterplot in Appendix A, there is no relationship between undernourishment rate and fatlity rate. As undernourishment rate increases, the fatality rate of covid does not increase.It appears to show that undernourishment rates between 2% and 10%, have a fatality rate between 0% and 4%, however, most of the data is clustered around here.
+The Spearman's correlation test (Appendix A) reveals a rho value of 0.082, showing no relationship between the two variables - undernourishment rate and fatality rate. Additionally,  the p-value of 0.33 proves that this correlation is not statistically significant because it is greater than the significance level of 0.05. 

@@ -1,0 +1,44 @@
+---
+title: "LHS 610: HW Assignment 4"
+author: "Sereen Kallerackal"
+output: 
+  html_notebook:
+    toc: TRUE
+runtime: shiny
+---
+## Install packages here: 
+```{r}
+library(tidyverse)
+library(shiny)
+library(ggplot2)
+library(rlang)
+#library(Rcurl)
+library(rsconnect)
+#rsconnect::deployApp()
+#commented the above stuff because that prevented me from running and publishing the document.
+```
+
+## Load the data here:
+```{r echo=FALSE}
+birth_rate_data <- read_csv("all_data.csv")
+
+```
+
+## Interactive Data Analysis:
+```{r echo=FALSE}
+selectInput('country',
+            label = "Select Country",
+            choices = birth_rate_data$`Country Name`)
+
+renderPlot({
+birth_rate_data %>%
+  gather('year','birth_rate',"2000":"2020") %>%
+  filter(`Country Name` == input$country)%>%
+  ggplot(aes(x = year, y = birth_rate, group = 1))+
+  geom_point()+
+    geom_line()
+})
+
+
+```
+

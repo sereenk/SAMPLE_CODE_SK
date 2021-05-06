@@ -1,0 +1,91 @@
+---
+title: "LHS 610: Week 3 Lab Assignment"
+author: "NAME HERE"
+output: html_notebook
+---
+
+# Submission Instructions
+Your lab solutions should be written entirely in this R notebook file. Once you are completed with the lab assignment, you should submit the .nb.html file. Before submitting, please make sure to run all code chunks and that all outputs are visible in the .nb.html file. Also make sure that all the code chunks execute without any errors.
+
+# Grading
+For lab assignment submissions, we will primarily be grading on completion. You will receive full credit on your lab if you attempt all of the problems on lab. 
+
+# Week 3 Lab Assignment Instructions
+Download the namcs08.RData file from Canvas files under the Week 3 folder. Answer the following questions using tidyverse (dplyr and tidyr).
+
+# Load any necessary packages here. 
+```{r}
+library(tidyverse)
+
+# Load any packages here
+```
+
+1. Diabetes can cause stiffening of the arteries, which can lead to patients having a higher blood pressure due to the increased resistance in the arteries. In this dataset, do patients with diabetes have a higher mean blood pressure than patients without diabetes? Use the diabetes column in the pmh data frame to help you answer the question.
+```{r echo=TRUE}
+
+left_join(patients, pmh) %>%
+  group_by(diabetes) %>%
+  summarize(mean_spb = mean(sbp), na.rm = TRUE)
+
+```
+
+2. What are the top 5 reasons why men and women visit the doctor? Are they the same for men and women, or do you notice any differences?
+```{r echo=TRUE}
+patients %>%
+  filter(sex == "Female") %>%
+  group_by(visitreason) %>%
+  summarise(n = n()) %>%
+  arrange(desc(n))
+
+patients %>%
+  filter(sex == "Male") %>%
+  group_by(visitreason) %>%
+  summarise(n = n()) %>%
+  arrange(desc(n))
+```
+
+3. How many patients in the dataset have a systolic blood pressure of greater than 140 (which is considered high) but do not know about it? You can assume that patients do not know about their high blood pressure if the htn column (short for "hypertension" or "high blood pressure") is marked as a 0 in the pmh data frame.
+```{r echo=TRUE}
+left_join(patients, pmh) %>%
+  mutate(sbp_high = if_else(sbp > 140, 'yes', 'no', 'missing')) %>%
+  group_by(sbp_high, htn) %>%
+  summarise(n = n()) %>%
+  spread(sbp_high , n)
+```
+
+4. Create a new data frame that contains the same information as the pmh data frame except it has 2 columns with the data looking like this. Your first 10 rows of data should match this below. Save this result to a new data frame called "comorbidities".
+ 
+id diagnosis
+1 arthritis
+1 hyperlipid
+1 htn
+1 ihd
+3 hyperlipid
+3 htn
+4 depression
+4 htn
+5 depression
+5 hyperlipid
+
+```{r echo=TRUE}
+#create new columns
+comorbidities <- pmh %>%
+  gather(diagnosis, dotheyhaveit, arthritis : osteoporosis) %>%
+  arrange(id,diagnosis, dotheyhaveit ) %>%
+  filter(dotheyhaveit == 1) %>%
+  select(-dotheyhaveit)
+
+```
+
+5. Using your newly created comorbidities data frame, convert it back to a form that matches the pmh data frame (note: that the column order may be slightly different, and it's okay if you have rows missing where patients have none of the listed comorbidities). Hint: Take a look at question 4 and work backwards. Also, take a look at the fill argument for the spread() function in order to replace missing values with zeros.
+```{r echo=TRUE}
+x  <- spread(comorbidities, id, 0)
+```
+
+6. Download the office_hours_data.csv file from Canvas files. Determine the top 3 most popular office hour time slots based on student selections.
+```{r echo=TRUE}
+new_data <- read.csv('office_hours_data.csv')
+new_data %>%
+  filter(timings)
+
+```

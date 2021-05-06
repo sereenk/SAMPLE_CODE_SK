@@ -1,0 +1,84 @@
+---
+title: "LHS 610: Week 1 HW Assignment 1"
+author: "Sereen Kallerackal"
+date: "27 January 2021"
+output: html_notebook
+---
+
+## Personal Information
+Please fill out the following.
+```{r}
+name = "Sereen Kallerackal"
+umid = "22465635"
+```
+
+## Load packages here.
+```{r}
+library(tidyverse)
+library(haven)
+library(NHANES)
+library(ggplot2)
+library(dplyr)
+```
+
+
+## Reading the "The 1999-2000 NHANES demographics data" file and "The 2015-2016 NHANES demographics data"
+```{r}
+data1 <- read_xpt(
+  'NHANES 1999-2000 Demographics Data.xpt',
+  col_select = NULL
+)
+
+data2 <- read_xpt(
+  'NHANES 2015-2016 Demographics Data .xpt',
+  col_select = NULL
+)
+
+```
+
+## Calculating the total number of participants in "The 1999-2000 NHANES demographics data" and "The 2015-2016 NHANES demographics data"
+```{r}
+len1 <- print(length(data1$DMDHRAGE))
+len2 <- print(length(data2$DMDHRAGE))
+
+```
+
+## Calculating summary of ages in "The 1999-2000 NHANES demographics data" and "The 2015-2016 NHANES demographics data"
+```{r}
+smry1 <- summary(data1$DMDHRAGE, na.rm = TRUE)
+smry2 <- summary(data2$DMDHRAGE, na.rm = TRUE)
+
+smry1
+
+smry2
+
+```
+
+## Creating a Bar Plot of "The 1999-2000 NHANES demographics data" 
+```{r}
+barplot(table(data1$DMDHRAGE), main = "Age distribution", xlab="Age")
+
+```
+
+## Creating a Bar Plot of "The 2015-2016 NHANES demographics data 
+```{r}
+barplot(table(data2$DMDHRAGE), main = "Age distribution", xlab="Age")
+
+```
+
+## SUMMARY
+The 1999-2000 NHANES demographics data has 9965 participants and the 2015-2016 NHANES demographics data has 9971 participants.
+Additionally, the 1999-2000 bar plot shows a greater number of frequency between the ages 33 and 41. You can see a downward trend in this distribution. The 2015-2016 bar plot shows more frequency between the ages 45 and 78. And there is a sharp rise in age 80 above. 
+This anlysis provides evidence to show an increase in the general population age. 
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,101 @@
+---
+title: "LHS 610: Week 5 Lab Assignment"
+author: "NAME HERE"
+output: html_notebook
+---
+
+# Submission Instructions
+Your lab solutions should be written entirely in this R notebook file. Once you are completed with the lab assignment, you should submit the .nb.html file. Before submitting, please make sure to run all code chunks and that all outputs are visible in the .nb.html file. Also make sure that all the code chunks execute without any errors.
+
+# Grading
+For lab assignment submissions, we will primarily be grading on completion. You will receive full credit on your lab if you attempt all of the problems on lab. 
+
+# Week 5 Lab Assignment Instructions
+Download the namcs08.RData file from Canvas files under the Week 5 folder. Answer the following questions using tidyverse (dplyr, tidyr, and ggplot2).
+
+# Load any necessary packages here. 
+```{r}
+# Load any packages here
+library(tidyverse)
+library(shiny)
+load('namcs08.rdata')
+```
+
+## Advanced data frame manipulation
+
+1. Let's say an X-ray costs \$50, an ultrasound costs \$100, a mammogram costs \$200, a CT scan costs \$500, PET costs \$700, and MRI costs \$1000. How much do individuals in the NAMCS dataset spend on imaging tests on average (mean and median)?
+
+(Note that some Americans have not had any of the above tests and thus spend no money on imaging tests.)
+```{r}
+tests %>%
+  group_by(test) %>%
+  summarize(n = n())
+
+costs = tibble(
+  test = c('xray', 'ultrasound', 'mammogram'),
+               cost = c(50,100,100,500,700,1000)
+)
+
+left_join(tests,costs) %>%
+  group_by(id) %>%
+  summarize(cost = sum(cost, na.rm = TRUE)) %>%
+  left_join(patients, .) %>%
+  select(id,cost) %>%
+  mutate(cost = if_else(is.na(cost), 0, cost)) %>%
+  summarize(cost = mean(cost), median_cost = median(cost))
+              
+
+          
+```
+
+## Introduction to plotting
+
+Answer the following questions using a plot. Provide a 1-sentence explanation for your result for each question.
+
+2. Generate a plot that demonstrates the relationship between age and height. What is your interpretation of this?
+```{r}
+# YOUR CODE HERE
+patients %>%
+  ggplot(aes(x= age, y = height)) +
+  geom_point(Position = 'jitter', alpha = 1/10)
+```
+
+3. What is the distribution of payment method (paytype column in the patients data frame)? Which insurance is most and least common?
+```{r}
+# YOUR CODE HERE
+patients %>%
+  group_by(paytype)%>%
+  summarize(n=n())
+
+patients %>%
+  ggplot(aes(x= paytype)) +
+  geom_bar() +
+  coord_flip()
+```
+
+4. Is depression more common in patients with diabetes as compared to individuals without diabetes? Use the pmh data frame. Before you plot, you should use mutate() to convert the diabetes column into a character variable with values of "Diabetes" and "No diabetes" (for values 1 and 0, respectively) and convert the depression column into a character variable with values of "Depression" and "No depression". 
+```{r}
+pmh %>%
+ mutate(diabetes = if_else(diabetes == 1, 'diabetes', 'No diabetes')) %>%
+  mutate(depression = if_else(depression == 1,'Depression', 'No Despression')) %>%
+  ggplot(aes(x = diabetes, fill = depression))+ 
+  geom_bar()
+```
+
+5. Generate these box plots (shown on Canvas) showing the distribution of systolic blood pressure (sbp) for individuals whose visit reason was "Hypertension". Interpret the findings of the plot.
+```{r}
+patients %>%
+  filter(visitreasin == 'Hypertension')%>%
+  ggplot(aes(x= visitreason, y = sbp))+
+  geom_boxplot()
+```
+
+6. Generate this plot (shown on Canvas) showing the relationship between height and weight for different age groups. Interpret the findings of the plot.
+Note: There is a typo in the second category. It should read “Age 10-19” (and not 10-29).
+```{r}
+patients %>%
+  filter(age,height,weight) %>%
+  group_by(age)%>%
+  summaroze(n=n())
+
+```
