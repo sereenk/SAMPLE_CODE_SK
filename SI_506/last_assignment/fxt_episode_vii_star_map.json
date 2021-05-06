@@ -1,0 +1,87 @@
+{
+  "url": "https://swapi.py4e.com/api/people/87/",
+  "name": "BB8",
+  "model": "BB-series astromech droid",
+  "manufacturer": "Industrial Automaton",
+  "create_year": "29 ABY",
+  "height": 67.0,
+  "mass": 18.0,
+  "equipment": [
+    "Arc welder",
+    "Grappling Spike Launcher",
+    "Holoprojector",
+    "Welding torch"
+  ],
+  "instructions": [
+    {
+      "flight_plan": {
+        "destination": {
+          "url": "https://swapi.py4e.com/api/planets/61/",
+          "name": "Jakku",
+          "region": "Western Reaches Inner Rim",
+          "sector": null,
+          "suns": 1,
+          "moons": 2,
+          "orbital_period_days": 352.0,
+          "diameter_km": 6400,
+          "gravity": "unknown",
+          "climate": [
+            "cold"
+          ],
+          "terrain": [
+            "desert"
+          ],
+          "population": 24000
+        },
+        "hyperspace_route": "Burke's Trailing",
+        "year": "34 ABY"
+      }
+    },
+    {
+      "locate_person": {
+        "url": "https://starwars.fandom.com/wiki/Lor_San_Tekka",
+        "name": "Lor San Tekka",
+        "birth_year": null,
+        "height": 185.0,
+        "mass": null,
+        "homeworld": {
+          "url": "https://swapi.py4e.com/api/planets/61/",
+          "name": "Jakku",
+          "region": "Western Reaches Inner Rim",
+          "sector": null,
+          "suns": 1,
+          "moons": 2,
+          "orbital_period_days": 352.0,
+          "diameter_km": 6400,
+          "gravity": "unknown",
+          "climate": [
+            "cold"
+          ],
+          "terrain": [
+            "desert"
+          ],
+          "population": 24000
+        },
+        "species": {
+          "url": "https://swapi.py4e.com/api/species/1/",
+          "name": "Human",
+          "classification": "mammal",
+          "designation": "sentient",
+          "language": "Galactic Basic"
+        },
+        "force_sensitive": false
+      }
+    },
+    {
+      "star_map": {
+        "key": "3376ac46-02ef-48c5-aec9-b439d3ca0e34",
+        "region": null,
+        "system": "Ahch-To system",
+        "sector": null,
+        "planet": "Ahch-To",
+        "place": "Jedi Temple",
+        "grid_coordinates": null
+      }
+    }
+  ]
+}

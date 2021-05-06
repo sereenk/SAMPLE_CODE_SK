@@ -1,0 +1,135 @@
+{
+  "url": "https://swapi.py4e.com/api/starships/77/",
+  "name": "X-wing",
+  "model": "T-70 X-wing",
+  "starship_class": "Starfighter",
+  "manufacturer": "Incom Corporation",
+  "length": 12.49,
+  "max_atmosphering_speed": 1100,
+  "hyperdrive_rating": 1.0,
+  "MGLT": 110,
+  "armament": [
+    "4 x Taim & Bak KX12 laser cannons",
+    "2 x Krupx MG7-A torpedo launchers",
+    "8 x Miniaturized Krupx MG7-A proton torpedoes",
+    "4 x Ion bombs",
+    "1 x BlasTech Ax-190-B blaster cannon (undercarriage-mounted)"
+  ],
+  "crew": 1,
+  "crew_members": {
+    "pilot": {
+      "url": "https://swapi.py4e.com/api/people/86/",
+      "name": "Poe Dameron",
+      "birth_year": "2 ABY",
+      "height": 172.0,
+      "mass": 80.0,
+      "homeworld": {
+        "url": "https://swapi.py4e.com/api/planets/3/",
+        "name": "Yavin IV",
+        "region": "Outer Rim Territories",
+        "sector": "Gordian Reach",
+        "suns": null,
+        "moons": 0,
+        "orbital_period_days": 4818.0,
+        "diameter_km": 10200,
+        "gravity": "1 standard",
+        "climate": [
+          "Temperate",
+          "Tropical"
+        ],
+        "terrain": [
+          "Jungles"
+        ],
+        "population": null
+      },
+      "species": {
+        "url": "https://swapi.py4e.com/api/species/1/",
+        "name": "Human",
+        "classification": "mammal",
+        "designation": "sentient",
+        "language": "Galactic Basic"
+      },
+      "force_sensitive": false
+    },
+    "astro_mech_droid": {
+      "url": "https://swapi.py4e.com/api/people/87/",
+      "name": "BB8",
+      "model": "BB-series astromech droid",
+      "manufacturer": "Industrial Automaton",
+      "create_year": "29 ABY",
+      "height": 67.0,
+      "mass": 18.0,
+      "equipment": [
+        "Arc welder",
+        "Grappling Spike Launcher",
+        "Holoprojector",
+        "Welding torch"
+      ],
+      "instructions": [
+        {
+          "flight_plan": {
+            "destination": {
+              "url": "https://swapi.py4e.com/api/planets/61/",
+              "name": "Jakku",
+              "region": "Western Reaches Inner Rim",
+              "sector": null,
+              "suns": 1,
+              "moons": 2,
+              "orbital_period_days": 352.0,
+              "diameter_km": 6400,
+              "gravity": "unknown",
+              "climate": [
+                "cold"
+              ],
+              "terrain": [
+                "desert"
+              ],
+              "population": 24000
+            },
+            "hyperspace_route": "Burke's Trailing",
+            "year": "34 ABY"
+          }
+        },
+        {
+          "locate_person": {
+            "url": "https://starwars.fandom.com/wiki/Lor_San_Tekka",
+            "name": "Lor San Tekka",
+            "birth_year": null,
+            "height": 185.0,
+            "mass": null,
+            "homeworld": {
+              "url": "https://swapi.py4e.com/api/planets/61/",
+              "name": "Jakku",
+              "region": "Western Reaches Inner Rim",
+              "sector": null,
+              "suns": 1,
+              "moons": 2,
+              "orbital_period_days": 352.0,
+              "diameter_km": 6400,
+              "gravity": "unknown",
+              "climate": [
+                "cold"
+              ],
+              "terrain": [
+                "desert"
+              ],
+              "population": 24000
+            },
+            "species": {
+              "url": "https://swapi.py4e.com/api/species/1/",
+              "name": "Human",
+              "classification": "mammal",
+              "designation": "sentient",
+              "language": "Galactic Basic"
+            },
+            "force_sensitive": false
+          }
+        }
+      ]
+    }
+  },
+  "passengers": 0,
+  "passengers_on_board": null,
+  "cargo_capacity": 110,
+  "consumables": "1 week"
+}

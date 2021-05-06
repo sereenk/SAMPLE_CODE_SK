@@ -1,0 +1,197 @@
+[
+  {
+    "url": "https://swapi.py4e.com/api/planets/2/",
+    "name": "Alderaan",
+    "population": 2000000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/6/",
+    "name": "Bespin",
+    "population": 6000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/7/",
+    "name": "Endor",
+    "population": 30000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/8/",
+    "name": "Naboo",
+    "population": 4500000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/9/",
+    "name": "Coruscant",
+    "population": 1000000000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/10/",
+    "name": "Kamino",
+    "population": 1000000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/11/",
+    "name": "Geonosis",
+    "population": 100000000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/12/",
+    "name": "Utapau",
+    "population": 95000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/13/",
+    "name": "Mustafar",
+    "population": 20000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/14/",
+    "name": "Kashyyyk",
+    "population": 45000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/15/",
+    "name": "Polis Massa",
+    "population": 1000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/16/",
+    "name": "Mygeeto",
+    "population": 19000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/17/",
+    "name": "Felucia",
+    "population": 8500000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/18/",
+    "name": "Cato Neimoidia",
+    "population": 10000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/19/",
+    "name": "Saleucami",
+    "population": 1400000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/21/",
+    "name": "Eriadu",
+    "population": 22000000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/22/",
+    "name": "Corellia",
+    "population": 3000000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/23/",
+    "name": "Rodia",
+    "population": 1300000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/24/",
+    "name": "Nal Hutta",
+    "population": 7000000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/26/",
+    "name": "Bestine IV",
+    "population": 62000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/27/",
+    "name": "Ord Mantell",
+    "population": 4000000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/29/",
+    "name": "Trandosha",
+    "population": 42000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/30/",
+    "name": "Socorro",
+    "population": 300000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/31/",
+    "name": "Mon Cala",
+    "population": 27000000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/32/",
+    "name": "Chandrila",
+    "population": 1200000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/33/",
+    "name": "Sullust",
+    "population": 18500000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/34/",
+    "name": "Toydaria",
+    "population": 11000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/35/",
+    "name": "Malastare",
+    "population": 2000000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/37/",
+    "name": "Ryloth",
+    "population": 1500000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/39/",
+    "name": "Vulpter",
+    "population": 421000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/42/",
+    "name": "Haruun Kal",
+    "population": 705300
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/43/",
+    "name": "Cerea",
+    "population": 450000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/44/",
+    "name": "Glee Anselm",
+    "population": 500000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/50/",
+    "name": "Champala",
+    "population": 3500000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/55/",
+    "name": "Ojom",
+    "population": 500000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/56/",
+    "name": "Skako",
+    "population": 500000000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/57/",
+    "name": "Muunilinst",
+    "population": 5000000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/59/",
+    "name": "Kalee",
+    "population": 4000000000
+  },
+  {
+    "url": "https://swapi.py4e.com/api/planets/1/",
+    "name": "Tatooine",
+    "population": 200000
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "name": "Obi-Wan Kenobi",
+  "hair_color": "auburn, white",
+  "skin_color": "fair",
+  "eye_color": "blue-gray",
+  "gender": "male",
+  "films": [
+    "https://swapi.py4e.com/api/films/1/",
+    "https://swapi.py4e.com/api/films/2/",
+    "https://swapi.py4e.com/api/films/3/",
+    "https://swapi.py4e.com/api/films/4/",
+    "https://swapi.py4e.com/api/films/5/",
+    "https://swapi.py4e.com/api/films/6/"
+  ],
+  "url": "https://swapi.py4e.com/api/people/10/"
+}
