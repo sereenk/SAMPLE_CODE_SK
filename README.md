@@ -1,4 +1,4 @@
-# UMICH-WINTER-21-
+# UMICH-WINTER-21- SAMPLE CODE
 This repository contains assignments and sample codes from the classes taken in Winter'21. 
 
 The classes taken are:
