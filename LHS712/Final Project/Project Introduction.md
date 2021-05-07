@@ -13,4 +13,4 @@ This task is considered a three-way classification task where the target classes
 
 Contributors: This was a group project done by Jeong-Woo Ko, Lyna Truong and Sereen Kallerackal. 
 
-NOTE: Provided sample code to prevent plaigerism. Please email me(sereen.kallerackal@gmail.com) if you want the complete Repo. 
+NOTE: Provided sample code to prevent plagiarism. Please email me(sereen.kallerackal@gmail.com) if you want the complete Repo. 
