@@ -35,21 +35,7 @@ dt_results =
   last_fit(split = split_data,
            metrics = metric_set(roc_auc, pr_auc, accuracy))
 
-dt_results %>%
-  collect_predictions()
-
-
-dt_results %>%
-  collect_metrics()
 ```
 
-
-
-
-
- 
-## 3. What does the area under the curve mean? (this may not be covered in the lecture video but we will discuss in lab)
-
-Q3 Answer: The area under the curve helps to understand performance at various thresholds
 
 
