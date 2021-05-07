@@ -1,6 +1,6 @@
-CLASSIFICATION OF COVID-19 TWEETS CONTAINING SYMPTOMS or SMM4H Task 6
+# CLASSIFICATION OF COVID-19 TWEETS CONTAINING SYMPTOMS or SMM4H Task 6
 
-Task 6 : Classification of COVID19 tweets containing symptoms
+## GOAL: 
 
 Identifying personal mentions of COVID19 symptoms requires distinguishing personal mentions from other mentions such as symptoms reported by others and references to news articles or other sources. The classification medical symptoms from COVID-19 Twitter posts presents two key issues: First, there is plenty of discourse around news and scientific articles that describe medical symptoms. While this discourse is not related to any user in particular, it enhances the difficulty of identifying valuable user-reported information. Second, many users describe symptoms that other people experience, instead of their own, as they are usually caregivers or relatives of people presenting the symptoms.
 This makes the task of separating what the user is self-reporting particularly tricky, as the discourse is not only around personal experiences. 
