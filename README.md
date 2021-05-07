@@ -1,6 +1,8 @@
 # UMICH_SAMPLE CODES
 This repository contains assignments and sample codes from the classes taken at the University of Michigan, Ann arbor. 
 
+NOTE: I have provided sample code to prevent plagiarism. Please email me(sereen.kallerackal@gmail.com) if you want the complete repo.
+
 The classes taken are:
 
 ## SI 506: Intro to Programming(Python)
